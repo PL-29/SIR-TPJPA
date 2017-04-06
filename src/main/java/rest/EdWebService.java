@@ -37,6 +37,7 @@ public class EdWebService {
         JSONObject jsonEd = new JSONObject(jsonStringEd);
         ElectronicDevice ed = new ElectronicDevice();
         ed.setConsomation(jsonEd.getInt("consomation"));
-        return ElectronicDeviceDao.createHeater(ed);
+        ed.setFonction(jsonEd.getString("fonction"));
+        return ElectronicDeviceDao.createElectronicDevice(ed);
     }
 }

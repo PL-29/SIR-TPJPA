@@ -20,7 +20,7 @@ public class ElectronicDeviceDao {
                 .getSingleResult();
     }
 
-    public static Boolean createHeater(ElectronicDevice ed){
+    public static Boolean createElectronicDevice(ElectronicDevice ed){
         EntityTransaction tx = Manager.getManagerInstance().getTransaction();
         tx.begin();
         try {
