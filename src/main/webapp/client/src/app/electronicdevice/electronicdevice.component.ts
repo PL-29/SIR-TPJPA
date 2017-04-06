@@ -10,7 +10,8 @@ import {ModalDirective} from "ng2-bootstrap";
 })
 export class ElectronicdeviceComponent implements OnInit {
 
-  consommation:any;
+  consumption:any;
+  fonction:any;
 
   electronicdevices;
 
@@ -43,7 +44,8 @@ export class ElectronicdeviceComponent implements OnInit {
       headers.append('Content-Type', 'application/json');
 
       var content = JSON.stringify({
-        consommation: this.consommation,
+        consumption: this.consumption,
+        fonction: this.fonction,
       });
 
       return this.http.put('/rest/electronicdevice/create', content, {
