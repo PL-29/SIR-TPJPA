@@ -20,7 +20,6 @@ export class PersonComponent implements OnInit {
 
   ngOnInit() {
       this.getPersons();
-      console.log('aaaaaa'+this.persons);
   }
 
   addPerson() {
@@ -57,5 +56,4 @@ export class PersonComponent implements OnInit {
         err => { console.log(err); }
       );
   }
-
 }

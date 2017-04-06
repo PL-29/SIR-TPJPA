@@ -9,20 +9,46 @@ import { Http } from '@angular/http';
 })
 export class ElectronicdeviceComponent implements OnInit {
 
-  lastname:any;
-  firstname:any;
-  email:any;
+  consommation:any;
+
+  electronicdevices;
 
   constructor(private http: Http) {
   }
 
   ngOnInit() {
+      this.getElectronicDevices();
   }
 
-  addEd() {
-    ///http.put('http://localhost:8080/person/create')
-      //.map(response => response.json());
+  addElectronicDevice() {
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
 
-      console.log(this.lastname);
+      var content = JSON.stringify({
+        consommation: this.consommation,
+      });
+
+      return this.http.put('/rest/electronicdevice/create', content, {
+        headers: headers
+      }).map(res => res.json()).subscribe(
+        data => { console.log(data); },
+        err => { console.log(err); }
+      );
+  }
+
+  getElectronicDeviceById(){
+    this.electronicdevices = this.http.get('/rest/electronicdevice/search/1');
+  }
+
+  getElectronicDevices(){
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      return this.http.get('/rest/electronicdevice/', {
+        headers: headers
+      }).map(res => res.json()).subscribe(
+        data => { this.electronicdevices = data; console.log(data); },
+        err => { console.log(err); }
+      );
   }
 }
