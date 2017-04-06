@@ -3,11 +3,13 @@
 <table class="table">
   <thead>
   <th>Id appareil electronique</th>
+  <th>Fonction</th>
   <th>Consomation</th>
   </thead>
   <tbody>
   <tr *ngFor="let electronicdevice of electronicdevices">
     <td>{{ electronicdevice.idElectronicDevice}}</td>
+    <td>{{ electronicdevice.fonction }}</td>
     <td>{{ electronicdevice.consomation }}</td>
   </tr>
   </tbody>
