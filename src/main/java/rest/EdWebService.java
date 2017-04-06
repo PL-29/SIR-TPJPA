@@ -34,7 +34,6 @@ public class EdWebService {
     @Path("create")
     @Produces({ MediaType.APPLICATION_JSON })
     public Boolean createEd(String jsonStringEd) {
-        System.out.println(jsonStringEd);
         JSONObject jsonEd = new JSONObject(jsonStringEd);
         ElectronicDevice ed = new ElectronicDevice();
         ed.setConsomation(jsonEd.getInt("consumption"));
