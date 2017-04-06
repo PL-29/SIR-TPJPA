@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 public class ElectronicDevice extends SmartPeripheric{
     int idElectronicDevice;
+    String fonction;
     Home residence;
 
     public ElectronicDevice() {
@@ -23,6 +24,14 @@ public class ElectronicDevice extends SmartPeripheric{
 
     public void setIdElectronicDevice(int idElectronicDevice) {
         this.idElectronicDevice = idElectronicDevice;
+    }
+
+    public String getFonction() {
+        return fonction;
+    }
+
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
     }
 
     public int getConsommation() {
