@@ -42,6 +42,12 @@ public class Heater extends SmartPeripheric{
         this.power = power;
     }
 
+    public int getConsommation() {
+        return super.getConsomation();
+    }
+
+    public void setConsommation(int consommation) { super.setConsomation(consommation); }
+
     @ManyToOne
     @JoinColumn(name="HOME_HEATER", referencedColumnName="HOME_ID")
     public Home getResidence() {

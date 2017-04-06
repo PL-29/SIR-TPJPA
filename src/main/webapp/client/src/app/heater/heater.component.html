@@ -1,3 +1,25 @@
-<p>
-  heater works!
-</p>
+<h2>Basic Table</h2>
+<p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+<table class="table">
+  <thead>
+  <th>Id Chauffage</th>
+  <th>Puissance</th>
+  <th>Consomation</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let heater of heaters">
+    <td>{{ heater.idHeater }}</td>
+    <td>{{ heater.power }}</td>
+    <td>{{ heater.consomation }}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<form Method="POST" Action="/person" (ngSubmit)="addPerson()">
+  Lastname : 		<input type=text size=20 name=lastname [(ngModel)]="lastname"><br>
+  Firstname : 	<input type=text size=20 name=firstname [(ngModel)]="firstname"><br>
+  Email : 		<input type=text size=2 name=email [(ngModel)]="email"><br>
+  <input type=submit value=Send>
+</form>

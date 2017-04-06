@@ -25,6 +25,12 @@ public class ElectronicDevice extends SmartPeripheric{
         this.idElectronicDevice = idElectronicDevice;
     }
 
+    public int getConsommation() {
+        return super.getConsomation();
+    }
+
+    public void setConsommation(int consommation) { super.setConsomation(consommation); }
+
     @ManyToOne
     @JoinColumn(name="HOME_ED", referencedColumnName="HOME_ID")
     public Home getResidence() {
