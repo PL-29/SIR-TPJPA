@@ -25,13 +25,21 @@
         </button>
       </div>
       <div class="modal-body">
-        <form Method="POST" Action="/person" (ngSubmit)="addPerson()">
-          Lastname : 		<input type=text size=20 name=lastname [(ngModel)]="lastname"><br>
-          Firstname : 	<input type=text size=20 name=firstname [(ngModel)]="firstname"><br>
-          Email : 		<input type=text size=2 name=email [(ngModel)]="email"><br>
-          <input type=submit value=Send>
+        <form method="POST" action="/person" (ngSubmit)="addPerson()">
+          <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input id="lastname" type=text class="form-control" name=lastname placeholder="Lastname"[(ngModel)]="lastname">
+          </div>
+          <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input id="firstname" type=text class="form-control" name=firstname placeholder="Firstname"[(ngModel)]="firstname">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type=text class="form-control" name=email placeholder="Email"[(ngModel)]="email">
+          </div>
         </form>
-    </div>
+      </div>
     </div>
   </div>
 </div>

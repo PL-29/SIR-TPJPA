@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
+import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
   selector: 'electronicdevice',
@@ -13,12 +14,29 @@ export class ElectronicdeviceComponent implements OnInit {
 
   electronicdevices;
 
+  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  public isModalShown:boolean = false;
+
   constructor(private http: Http) {
   }
 
   ngOnInit() {
       this.getElectronicDevices();
   }
+
+  public showModal():void {
+    this.isModalShown = true;
+  }
+
+  public hideModal():void {
+    this.autoShownModal.hide();
+  }
+
+  public onHidden():void {
+    this.isModalShown = false;
+  }
+
+
 
   addElectronicDevice() {
       var headers = new Headers();

@@ -3,8 +3,8 @@
 <table class="table">
   <thead>
   <th>Id Maison</th>
-  <th>Nombre de pièces</th>
-  <th>Taille (en m²)</th>
+  <th>Number of rooms</th>
+  <th>Acreage</th>
   </thead>
   <tbody>
   <tr *ngFor="let home of homes">
@@ -14,12 +14,28 @@
   </tr>
   </tbody>
 </table>
-
-
-
-<form Method="POST" Action="/person" (ngSubmit)="addPerson()">
-  Lastname : 		<input type=text size=20 name=lastname [(ngModel)]="lastname"><br>
-  Firstname : 	<input type=text size=20 name=firstname [(ngModel)]="firstname"><br>
-  Email : 		<input type=text size=2 name=email [(ngModel)]="email"><br>
-  <input type=submit value=Send>
-</form>
+<button type="button" class="btn btn-primary" (click)="showModal()">Add a home</button>
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Add a home</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/person" (ngSubmit)="addPerson()">
+          <div class="form-group">
+            <label for="nbRoom">Number of rooms</label>
+            <input id="nbRoom" type=text class="form-control" name=nbRoom placeholder="Number of Rooms"[(ngModel)]="nbRoom">
+          </div>
+          <div class="form-group">
+            <label for="size">Acreage</label>
+            <input id="size" type=text class="form-control" name=size placeholder="Acreage"[(ngModel)]="size">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

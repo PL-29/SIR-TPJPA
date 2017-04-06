@@ -3,8 +3,8 @@
 <table class="table">
   <thead>
   <th>Id Chauffage</th>
-  <th>Puissance</th>
-  <th>Consomation</th>
+  <th>Power</th>
+  <th>Consumption</th>
   </thead>
   <tbody>
   <tr *ngFor="let heater of heaters">
@@ -14,12 +14,28 @@
   </tr>
   </tbody>
 </table>
-
-
-
-<form Method="POST" Action="/person" (ngSubmit)="addPerson()">
-  Lastname : 		<input type=text size=20 name=lastname [(ngModel)]="lastname"><br>
-  Firstname : 	<input type=text size=20 name=firstname [(ngModel)]="firstname"><br>
-  Email : 		<input type=text size=2 name=email [(ngModel)]="email"><br>
-  <input type=submit value=Send>
-</form>
+<button type="button" class="btn btn-primary" (click)="showModal()">Add a heater</button>
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Add a heater</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/person" (ngSubmit)="addPerson()">
+          <div class="form-group">
+            <label for="power">Power</label>
+            <input id="power" type=text class="form-control" name="power" placeholder="Power"[(ngModel)]="power">
+          </div>
+          <div class="form-group">
+            <label for="consomation">Consumption</label>
+            <input id="consomation" type="text" class="form-control" name="consomation" placeholder="Consumption"[(ngModel)]="consomation">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

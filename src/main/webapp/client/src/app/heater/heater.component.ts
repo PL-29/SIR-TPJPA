@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
   selector: 'heater',
@@ -14,10 +14,27 @@ export class HeaterComponent implements OnInit {
 
   heaters;
 
+
+  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  public isModalShown:boolean = false;
+
+
   constructor(private http: Http) { }
 
   ngOnInit() {
       this.getHeaters();
+  }
+
+  public showModal():void {
+    this.isModalShown = true;
+  }
+
+  public hideModal():void {
+    this.autoShownModal.hide();
+  }
+
+  public onHidden():void {
+    this.isModalShown = false;
   }
 
   addHeater() {

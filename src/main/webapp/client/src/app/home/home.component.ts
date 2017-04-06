@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
+import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
   selector: 'home',
@@ -14,11 +15,27 @@ export class HomeComponent implements OnInit {
 
   homes;
 
+  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  public isModalShown:boolean = false;
+
   constructor(private http: Http) { }
 
   ngOnInit() {
       this.getHomes();
   }
+
+  public showModal():void {
+    this.isModalShown = true;
+  }
+
+  public hideModal():void {
+    this.autoShownModal.hide();
+  }
+
+  public onHidden():void {
+    this.isModalShown = false;
+  }
+
 
   addHome() {
       var headers = new Headers();

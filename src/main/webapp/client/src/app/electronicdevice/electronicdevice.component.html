@@ -2,9 +2,9 @@
 <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
 <table class="table">
   <thead>
-  <th>Id appareil electronique</th>
+  <th>Id</th>
   <th>Fonction</th>
-  <th>Consomation</th>
+  <th>Consumption</th>
   </thead>
   <tbody>
   <tr *ngFor="let electronicdevice of electronicdevices">
@@ -14,12 +14,31 @@
   </tr>
   </tbody>
 </table>
+<button type="button" class="btn btn-primary" (click)="showModal()">Add an electronic device</button>
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Add an electronic device</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/person" (ngSubmit)="addPerson()">
+          <div class="form-group">
+            <label for="fonction">Fonction</label>
+            <input id="fonction" type=text class="form-control" name=fonction placeholder="Fonction"[(ngModel)]="fonction">
+          </div>
+          <div class="form-group">
+            <label for="consumption">Consumption</label>
+            <input id="consumption" type=text class="form-control" name=consumption placeholder="Consumption"[(ngModel)]="consumption">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
-<form Method="POST" Action="/person" (ngSubmit)="addPerson()">
-  Lastname : 		<input type=text size=20 name=lastname [(ngModel)]="lastname"><br>
-  Firstname : 	<input type=text size=20 name=firstname [(ngModel)]="firstname"><br>
-  Email : 		<input type=text size=2 name=email [(ngModel)]="email"><br>
-  <input type=submit value=Send>
-</form>
