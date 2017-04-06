@@ -38,8 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   getHomeById(id){
-    this.homes = this.http
-                    .get('/rest/home/search/'+id);
+    this.homes = this.http.get('/rest/home/search/'+id);
   }
 
   getHomes(){
