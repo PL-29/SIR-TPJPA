@@ -4,11 +4,9 @@ import dao.HeaterDao;
 import dao.HomeDao;
 import domain.Heater;
 import domain.Home;
+import org.json.JSONObject;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -28,5 +26,16 @@ public class HeaterWebService {
     @Produces({ MediaType.APPLICATION_JSON })
     public Heater findById(@PathParam("id") int id) {
         return HeaterDao.getHeaterById(id);
+    }
+
+    @PUT
+    @Path("create")
+    @Produces({ MediaType.APPLICATION_JSON })
+    public Boolean createHeater(String jsonStringHeater) {
+        JSONObject jsonHeater = new JSONObject(jsonStringHeater);
+        Heater heater = new Heater();
+        heater.setPower(jsonHeater.getInt("power"));
+        heater.setConsomation(jsonHeater.getInt("consomation"));
+        return HeaterDao.createHeater(heater);
     }
 }

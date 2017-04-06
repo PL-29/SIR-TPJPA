@@ -4,11 +4,9 @@ import dao.HomeDao;
 import dao.PersonDao;
 import domain.Home;
 import domain.Person;
+import org.json.JSONObject;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -28,6 +26,17 @@ public class HomeWebService {
     @Produces({ MediaType.APPLICATION_JSON })
     public Home findById(@PathParam("id") int id) {
         return HomeDao.getHomeById(id);
+    }
+
+    @PUT
+    @Path("create")
+    @Produces({ MediaType.APPLICATION_JSON })
+    public Boolean createHome(String jsonStringHome) {
+        JSONObject jsonHome = new JSONObject(jsonStringHome);
+        Home home = new Home();
+        home.setSize(jsonHome.getInt("size"));
+        home.setNbRoom(jsonHome.getInt("nbRoom"));
+        return HomeDao.createHome(home);
     }
 }
 
