@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  navbarCollapsed = true;
+  public navbarCollapsed = false;
 
   constructor(private router: Router) {
   }
