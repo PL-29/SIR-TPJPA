@@ -1,4 +1,21 @@
-<form Method="POST" Action="/person" (ngSubmit)="addEd()">
+<h2>Basic Table</h2>
+<p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+<table class="table">
+  <thead>
+  <th>Id appareil electronique</th>
+  <th>Consomation</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let electronicdevice of electronicdevices">
+    <td>{{ electronicdevice.idElectronicDevice}}</td>
+    <td>{{ electronicdevice.consomation }}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<form Method="POST" Action="/person" (ngSubmit)="addPerson()">
   Lastname : 		<input type=text size=20 name=lastname [(ngModel)]="lastname"><br>
   Firstname : 	<input type=text size=20 name=firstname [(ngModel)]="firstname"><br>
   Email : 		<input type=text size=2 name=email [(ngModel)]="email"><br>
