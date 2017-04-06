@@ -52,63 +52,134 @@ public class JpaTest {
 
 	public void createTheSituation(){
 		/* ------- HOME ------- */
-		Collection<Home> residences = new ArrayList<Home>();
-		Home residence = new Home();
-		residence.setNbRoom(5);
-		residence.setSize(1000);
-		residences.add(residence);
+		Collection<Home> residences1 = new ArrayList<Home>();
+		Home residence2 = new Home();
+		residence2.setNbRoom(6);
+		residence2.setSize(150);
+		residences1.add(residence2);
+
+		Home residence3 = new Home();
+		residence3.setNbRoom(25);
+		residence3.setSize(1000);
+		residences1.add(residence3);
+
+		Collection<Home> residences2 = new ArrayList<Home>();
+		Home residence4 = new Home();
+		residence4.setNbRoom(6);
+		residence4.setSize(150);
+		residences2.add(residence4);
+
+
 
 			/* ------- PERSON ------- */
 		Person p1 = new Person();
-		p1.setFirstname("Godis");
-		p1.setLastname("Bodie");
+		p1.setFirstname("Bodie");
+		p1.setLastname("Godis");
 		p1.setEmail("gb@gmail.com");
-		p1.setResidences(residences);
+		p1.setResidences(residences1);
+
 		Person p2 = new Person();
-		p2.setFirstname("PL");
-		p2.setLastname("Ollivier");
+		p2.setFirstname("Ollivier");
+		p2.setLastname("PL");
 		p2.setEmail("plo@gmail.com");
-		p2.setResidences(residences);
+		p2.setResidences(residences1);
+
+		Person p3 = new Person();
+		p3.setFirstname("Ravet");
+		p3.setLastname("Antoine");
+		p3.setEmail("raveta@gmail.com");
+		p3.setResidences(residences2);
+
+		Person p4 = new Person();
+		p4.setFirstname("Renault");
+		p4.setLastname("Alexis");
+		p4.setEmail("renaulta@gmail.com");
+		p4.setResidences(residences2);
 
 
 			/* ------- HEATER ------- */
-		Collection<Heater> heaters = new ArrayList<Heater>();
+		Collection<Heater> heaters1 = new ArrayList<Heater>();
 		Heater h1 = new Heater();
 		h1.setConsomation(50);
 		h1.setPower(1000);
+		heaters1.add(h1);
+
+		Collection<Heater> heaters2 = new ArrayList<Heater>();
 		Heater h2 = new Heater();
 		h2.setConsomation(100);
 		h2.setPower(2000);
-		heaters.add(h1);
-		heaters.add(h2);
-		h1.setResidence(residence);
-		h2.setResidence(residence);
-		residence.setHeaters(heaters);
+		heaters2.add(h2);
+
+		Collection<Heater> heaters3 = new ArrayList<Heater>();
+		Heater h3 = new Heater();
+		h3.setConsomation(75);
+		h3.setPower(1800);
+		heaters3.add(h3);
+
+		h1.setResidence(residence2);
+		h2.setResidence(residence3);
+		h3.setResidence(residence4);
+
+		residence2.setHeaters(heaters1);
+		residence3.setHeaters(heaters2);
+		residence4.setHeaters(heaters3);
 
 
 
 			/* ------- ED ------- */
-		Collection<ElectronicDevice> electronicDevices = new ArrayList<ElectronicDevice>();
+		Collection<ElectronicDevice> electronicDevices1 = new ArrayList<ElectronicDevice>();
 		ElectronicDevice ed1 = new ElectronicDevice();
 		ed1.setConsomation(100);
+		ed1.setFonction("Robot de cuisine");
+		ed1.setResidence(residence2);
+
 		ElectronicDevice ed2 = new ElectronicDevice();
 		ed2.setConsomation(20);
-		electronicDevices.add(ed1);
-		electronicDevices.add(ed2);
+		ed2.setFonction("Domotique");
+		ed2.setResidence(residence2);
 
+		Collection<ElectronicDevice> electronicDevices2 = new ArrayList<ElectronicDevice>();
+		ElectronicDevice ed3 = new ElectronicDevice();
+		ed3.setConsomation(250);
+		ed3.setFonction("Mixeur");
+		ed3.setResidence(residence3);
 
+		ElectronicDevice ed4 = new ElectronicDevice();
+		ed4.setConsomation(50);
+		ed4.setFonction("Caméras");
+		ed4.setResidence(residence3);
 
-		ed1.setResidence(residence);
-		ed2.setResidence(residence);
-		residence.setElectronicDevices(electronicDevices);
+		Collection<ElectronicDevice> electronicDevices3 = new ArrayList<ElectronicDevice>();
+		ElectronicDevice ed5 = new ElectronicDevice();
+		ed5.setConsomation(750);
+		ed5.setFonction("TV");
+		ed5.setResidence(residence4);
 
-		manager.persist(residence);
+		electronicDevices1.add(ed1);
+		electronicDevices1.add(ed2);
+		electronicDevices2.add(ed3);
+		electronicDevices2.add(ed4);
+		electronicDevices3.add(ed5);
+
+		residence2.setElectronicDevices(electronicDevices1);
+		residence3.setElectronicDevices(electronicDevices2);
+		residence4.setElectronicDevices(electronicDevices3);
+
+		manager.persist(residence2);
+		manager.persist(residence3);
+		manager.persist(residence4);
 		manager.persist(h1);
 		manager.persist(h2);
+		manager.persist(h3);
 		manager.persist(ed1);
 		manager.persist(ed2);
+		manager.persist(ed3);
+		manager.persist(ed4);
+		manager.persist(ed5);
 		manager.persist(p1);
 		manager.persist(p2);
+		manager.persist(p3);
+		manager.persist(p4);
 
 	}
 
