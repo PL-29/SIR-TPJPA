@@ -46,6 +46,12 @@
               <label for="consumption">Consumption</label>
               <input id="consumption" type=text class="form-control" name=consumption placeholder="Consumption"[(ngModel)]="consumption">
             </div>
+            <div class="form-group">
+              <label for="idHome">Residences</label>
+              <select id="idHome" name="idHome" [(ngModel)]="idHome">
+                <option *ngFor="let home of homes">{{ home.idHome }}</option>
+              </select>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>

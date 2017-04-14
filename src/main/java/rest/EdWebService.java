@@ -2,6 +2,7 @@ package rest;
 
 import dao.ElectronicDeviceDao;
 import dao.HeaterDao;
+import dao.HomeDao;
 import dao.PersonDao;
 import domain.ElectronicDevice;
 import domain.Heater;
@@ -19,7 +20,7 @@ import java.util.List;
 public class EdWebService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ElectronicDevice> getAllPersons() {
+    public List<ElectronicDevice> getAllEd() {
         return ElectronicDeviceDao.getHeaters();
     }
 
@@ -38,6 +39,7 @@ public class EdWebService {
         ElectronicDevice ed = new ElectronicDevice();
         ed.setConsomation(jsonEd.getInt("consumption"));
         ed.setFonction(jsonEd.getString("fonction"));
+        ed.setResidence(HomeDao.getHomeById(jsonEd.getInt("idHome")));
         return ElectronicDeviceDao.createElectronicDevice(ed);
     }
 }

@@ -12,8 +12,10 @@ export class ElectronicdeviceComponent implements OnInit {
 
   consumption:any;
   fonction:any;
+  idHome:any;
 
   electronicdevices;
+  homes;
 
   @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
   public isModalShown:boolean = false;
@@ -23,6 +25,7 @@ export class ElectronicdeviceComponent implements OnInit {
 
   ngOnInit() {
       this.getElectronicDevices();
+      this.getHomes();
   }
 
   public showModal():void {
@@ -46,6 +49,7 @@ export class ElectronicdeviceComponent implements OnInit {
       var content = JSON.stringify({
         consumption: this.consumption,
         fonction: this.fonction,
+        idHome: this.idHome,
       });
 
       return this.http.put('/rest/electronicdevice/create', content, {
@@ -68,6 +72,18 @@ export class ElectronicdeviceComponent implements OnInit {
         headers: headers
       }).map(res => res.json()).subscribe(
         data => { this.electronicdevices = data; console.log(data); },
+        err => { console.log(err); }
+      );
+  }
+
+  getHomes(){
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      return this.http.get('/rest/home/', {
+        headers: headers
+      }).map(res => res.json()).subscribe(
+        data => { this.homes = data; console.log(data); },
         err => { console.log(err); }
       );
   }

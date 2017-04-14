@@ -17,7 +17,7 @@ import java.util.List;
 public class HeaterWebService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Heater> getAllHomes() {
+    public List<Heater> getAllHeaters() {
         return HeaterDao.getHeaters();
     }
 
@@ -36,6 +36,7 @@ public class HeaterWebService {
         Heater heater = new Heater();
         heater.setPower(jsonHeater.getInt("power"));
         heater.setConsomation(jsonHeater.getInt("consomation"));
+        heater.setResidence(HomeDao.getHomeById(jsonHeater.getInt("idHome")));
         return HeaterDao.createHeater(heater);
     }
 }

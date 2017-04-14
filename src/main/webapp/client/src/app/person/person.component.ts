@@ -14,6 +14,8 @@ export class PersonComponent implements OnInit {
   email:any;
 
   persons;
+  homes;
+  homesChecked:any[] = [];
 
   @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
   public isModalShown:boolean = false;
@@ -23,6 +25,7 @@ export class PersonComponent implements OnInit {
 
   ngOnInit() {
       this.getPersons();
+      this.getHomes();
   }
 
   public showModal():void {
@@ -40,11 +43,16 @@ export class PersonComponent implements OnInit {
   addPerson() {
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
+      this.homes.filter(_ => _.selected).forEach(_ => { this.homesChecked.push({idHome:_.idHome});  });
+      console.log("bbbbckkkkkkkkktttccc----->");
+      console.log("bbbbckkkkkkkkktttccc----->");
+      console.log(this.homesChecked);
 
       var content = JSON.stringify({
         lastname: this.lastname,
         firstname: this.firstname,
         email: this.email,
+        homesChecked: this.homesChecked,
       });
 
       return this.http.put('/rest/person/create', content, {
@@ -68,6 +76,18 @@ export class PersonComponent implements OnInit {
         headers: headers
       }).map(res => res.json()).subscribe(
         data => { this.persons = data; console.log(data); },
+        err => { console.log(err); }
+      );
+  }
+
+  getHomes(){
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      return this.http.get('/rest/home/', {
+        headers: headers
+      }).map(res => res.json()).subscribe(
+        data => { this.homes = data; console.log(data); },
         err => { console.log(err); }
       );
   }
