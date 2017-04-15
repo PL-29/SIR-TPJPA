@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import {ModalDirective} from "ng2-bootstrap";
+import {Person} from "./person.model";
 
 @Component({
   selector: 'person',
@@ -12,6 +13,8 @@ export class PersonComponent implements OnInit {
   lastname:any;
   firstname:any;
   email:any;
+
+  filter:Person = new Person();
 
   persons;
   homes;

@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ng2-bootstrap';
 import { CollapseDirective } from 'ng2-bootstrap'
-import { ModalModule } from 'ng2-bootstrap';;
+import { ModalModule } from 'ng2-bootstrap';
+import { FilterPipe } from './filter';
 
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
@@ -23,7 +24,9 @@ import { HttpModule, JsonpModule } from '@angular/http';
     PersonComponent,
     HeaterComponent,
     ElectronicdeviceComponent,
-    CollapseDirective
+    CollapseDirective,
+    FilterPipe,
+
   ],
   imports: [
     BrowserModule,
