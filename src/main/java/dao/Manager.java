@@ -12,7 +12,6 @@ public class Manager {
     private static EntityManager MANAGER = factory.createEntityManager();
 
     public static EntityManager getManagerInstance(){
-        System.out.println("----------------------->"+MANAGER);
         return MANAGER;
     }
 }

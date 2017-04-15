@@ -44,9 +44,6 @@ export class PersonComponent implements OnInit {
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
       this.homes.filter(_ => _.selected).forEach(_ => { this.homesChecked.push({idHome:_.idHome});  });
-      console.log("bbbbckkkkkkkkktttccc----->");
-      console.log("bbbbckkkkkkkkktttccc----->");
-      console.log(this.homesChecked);
 
       var content = JSON.stringify({
         lastname: this.lastname,
@@ -64,8 +61,15 @@ export class PersonComponent implements OnInit {
   }
 
   getPersonById(){
-    this.persons = this.http
-                    .get('/rest/person/search/1');
+    var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      return this.http.get('/rest/person/search/1', {
+        headers: headers
+      }).map(res => res.json()).subscribe(
+        data => { this.persons = data; console.log(data); },
+        err => { console.log(err); }
+      );
   }
 
   getPersons(){
