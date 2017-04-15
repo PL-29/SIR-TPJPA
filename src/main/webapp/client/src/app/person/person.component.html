@@ -7,7 +7,7 @@
       <div class="form-group">
           <div class="input-group">
             <input type="text" placeholder="Enter the id of the person you need" name="s" class="form-control left-rounded">
-            <button type="submit" class="btn btn-primary" (click)="getPersonById()"><i class="fa fa-search"></i></button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
           </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
     <th>Email</th>
     </thead>
     <tbody>
-    <tr *ngFor="let person of persons">
+    <tr *ngFor="let person of  | FilterPersonName:filter">
       <td>{{ person.lastname }}</td>
       <td>{{ person.firstname }}</td>
       <td>{{ person.email }}</td>
