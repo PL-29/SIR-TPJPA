@@ -20,7 +20,7 @@
     <th>Email</th>
     </thead>
     <tbody>
-    <tr *ngFor="let person of persons | FilterPipe:filter">
+    <tr *ngFor="let person of persons | FilterPerson:filter">
       <td>{{ person.lastname }}</td>
       <td>{{ person.firstname }}</td>
       <td>{{ person.email }}</td>

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ng2-bootstrap';
 import { CollapseDirective } from 'ng2-bootstrap'
 import { ModalModule } from 'ng2-bootstrap';
-import { FilterPipe } from './filter';
+import { FilterPerson } from './filterPerson';
 import { FilterHome } from './filterHome';
 import { FilterHeater } from './filterHeater';
 import { FilterElectronicdevice } from './filterElectronicdevice';
@@ -28,7 +28,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
     HeaterComponent,
     ElectronicdeviceComponent,
     CollapseDirective,
-    FilterPipe,
+    FilterPerson,
     FilterHome,
     FilterHeater,
     FilterElectronicdevice,

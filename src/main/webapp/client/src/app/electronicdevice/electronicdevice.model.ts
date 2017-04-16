@@ -3,6 +3,6 @@
 */
 export class Electronicdevice {
   idEd: number;
-  function: string;
+  fonction: string;
   consumption: number;
 }

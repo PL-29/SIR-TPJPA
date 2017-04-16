@@ -3,10 +3,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Person } from './person/person.model';
 
 @Pipe({
-  name: 'FilterPipe',
+  name: 'FilterPerson',
   pure: false
 })
-export class FilterPipe implements PipeTransform {
+export class FilterPerson implements PipeTransform {
   transform(items: Person[], filter: Person): Person[] {
     if (!items || !filter) {
       return items;

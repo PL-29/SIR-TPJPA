@@ -23,9 +23,7 @@ export class FilterElectronicdevice implements PipeTransform {
    * @return {boolean} True if book satisfies filters, false if not.
    */
   applyFilter(electronicdevice: Electronicdevice, filter: Electronicdevice): boolean {
-    console.log("aaa"+electronicdevice.function);
-    console.log("bbb"+filter.function);
-    if (filter.function && electronicdevice.function.toLowerCase().indexOf(filter.function.toLowerCase()) === -1) {
+    if (filter.fonction && electronicdevice.fonction.toLowerCase().indexOf(filter.fonction.toLowerCase()) === -1) {
       return false;
     }
     return true;
