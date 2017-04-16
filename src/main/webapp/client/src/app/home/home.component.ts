@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
 import {ModalDirective} from "ng2-bootstrap";
+import {Home} from "./home.model";
 
 @Component({
   selector: 'home',
@@ -12,6 +13,8 @@ export class HomeComponent implements OnInit {
 
   nbRoom:any;
   size:any;
+
+  filter:Home = new Home();
 
   homes;
 

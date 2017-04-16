@@ -5,6 +5,9 @@ import { AlertModule } from 'ng2-bootstrap';
 import { CollapseDirective } from 'ng2-bootstrap'
 import { ModalModule } from 'ng2-bootstrap';
 import { FilterPipe } from './filter';
+import { FilterHome } from './filterHome';
+import { FilterHeater } from './filterHeater';
+import { FilterElectronicdevice } from './filterElectronicdevice';
 
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
@@ -26,6 +29,9 @@ import { HttpModule, JsonpModule } from '@angular/http';
     ElectronicdeviceComponent,
     CollapseDirective,
     FilterPipe,
+    FilterHome,
+    FilterHeater,
+    FilterElectronicdevice,
 
   ],
   imports: [

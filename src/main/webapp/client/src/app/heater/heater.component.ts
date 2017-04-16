@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import {ModalDirective} from "ng2-bootstrap";
+import {Heater} from "./heater.model";
 
 @Component({
   selector: 'heater',
@@ -12,6 +13,8 @@ export class HeaterComponent implements OnInit {
   power:any;
   consomation:any;
   idHome:any;
+
+  filter:Heater = new Heater();
 
   heaters;
   homes;

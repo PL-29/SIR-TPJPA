@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
 import {ModalDirective} from "ng2-bootstrap";
+import {Electronicdevice} from "./electronicdevice.model";
 
 @Component({
   selector: 'electronicdevice',
@@ -13,6 +14,8 @@ export class ElectronicdeviceComponent implements OnInit {
   consumption:any;
   fonction:any;
   idHome:any;
+
+  filter:Electronicdevice = new Electronicdevice();
 
   electronicdevices;
   homes;
